@@ -1,58 +1,69 @@
-# tron-usdt-trace
+# 🧭 TRON USDT 来源追踪工具
 
-一个用于追踪 TRON 网络中 USDT（TRC20）转账来源路径的 Python 工具，基于 TronScan Open API 实现，无需 API Key，可直接使用。
+这是一个基于浏览器的 USDT 资金流向追踪工具，适用于 TRON 网络。用户只需输入任意一个 TRON 地址，即可查看该地址最近接收的 USDT 的来源路径信息。
 
-## 🔍 功能特点
+部署地址（GitHub Pages）：
+👉 [点击访问工具页面](https://ahui-118.github.io/tronscan-usdt-tracker/)
 
-- 自动追踪 USDT 收款地址的来源路径，最多支持 10 层反向追踪
-- 显示每一层的发送地址、接收地址、转账金额、交易哈希、时间戳
-- 使用公开的 TronScan Open API，无需授权
-- 轻量级命令行脚本，易于运行和修改
+---
 
-## 📦 依赖要求
+## 🚀 功能说明
 
-- Python 3.7+
-- 第三方库：`requests`
+- 📥 支持用户输入 TRON 地址（以 `T` 开头的34位地址）
+- 🔍 追踪该地址最近接收到的 USDT 的来源地址
+- 🪜 显示路径跳数、转账金额等基础信息
+- 💻 无需安装，可直接在浏览器中使用
+- 📦 可本地运行，也可部署在 GitHub Pages
 
-安装依赖：
+---
 
-```bash
-pip install -r requirements.txt
-```
-
-## 🚀 使用方法
-
-运行主脚本：
+## 📂 项目结构
 
 ```bash
-python trace_usdt_tronscan.py
+tronscan-usdt-tracker/
+├── index.html       # 主页面（HTML + JS + CSS 内嵌）
+├── README.md        # 项目说明文件
 ```
 
-然后输入：
-1. 你想要追踪的 TRON 地址（例如：`TMXdkUSiKY3q...`）
-2. 想要追踪的层数（建议 3~10 层）
+---
 
-## 📤 输出示例
+## 🔧 使用方法
 
-```
-开始追踪 10 层 USDT 来源路径...
+### ✅ 在线使用
 
-第 1 层：TNJ4EAr3yF71... → TMXdkUSiKY3q... | 金额: 30000.0 USDT | 交易哈希: edbf39...
-第 2 层：TVakEy3... → TNJ4EAr3yF71... | 金额: 30000.0 USDT | 交易哈希: 29ba91...
-...
-第 10 层：TDcc23... → Txxxxxxx... | 金额: 30000.0 USDT | 交易哈希: a8ee12...
-```
+无需下载，点击访问：
 
-## 📁 项目结构
+👉 [https://ahui-118.github.io/tronscan-usdt-tracker/](https://ahui-118.github.io/tronscan-usdt-tracker/)
 
-```
-tron-usdt-trace/
-├── trace_usdt_tronscan.py    # 主脚本
-├── README.md                 # 使用说明
-├── requirements.txt          # Python 3.7 兼容依赖
+### 🖥 本地使用
+
+1. 克隆或下载此仓库：
+
+```bash
+git clone https://github.com/ahui-118/tronscan-usdt-tracker.git
 ```
 
-## 📄 授权协议
+2. 使用浏览器打开本地的 `index.html` 即可运行工具。
 
-MIT License  
-本工具仅供个人学习、溯源分析与合规用途使用，请勿用于非法活动。
+---
+
+## 🛠 后续计划（可选）
+
+- ✅ 集成 TronGrid API 实时追踪交易路径
+- ✅ 支持多级路径显示（转账链路跳数）
+- ✅ 加入 USDT 合约验证与筛选（防钓鱼地址）
+- ✅ 支持交易记录可视化图谱展示
+
+---
+
+## 📜 注意事项
+
+- 本工具暂为测试版本，默认使用示例数据。
+- 若需接入真实区块链数据，请在 JS 中接入 TronGrid API 或调用 TronScan Open API。
+- 本项目仅供学习和技术研究使用。
+
+---
+
+## 🙋‍♂️ 联系与反馈
+
+如有建议或问题，欢迎通过 Issues 提交反馈。

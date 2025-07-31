@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TRON USDT 来源地址追踪工具</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>USDT 来源地址追踪工具</h1>
+  <p>请输入一个 TRON 地址（如以 T 开头）：</p>
+
+  <input type="text" id="addressInput" placeholder="输入地址，例如：TVjs...">
+  <button onclick="traceUSDT()">查询</button>
+
+  <div id="result">
+    <!-- 查询结果将在这里显示 -->
+  </div>
+
+  <script>
+    async function traceUSDT() {
+      const address = document.getElementById('addressInput').value.trim();
+      const resultDiv = document.getElementById('result');
+      if (!/^T[a-zA-Z0-9]{33}$/.test(address)) {
+        resultDiv.innerHTML = "<span style='color:red;'>请输入有效的 TRON 地址（以 T 开头，共34位）</span>";
+        return;
+      }
+
+      resultDiv.innerHTML = "正在查询，请稍候...";
+
+      try {
+        // 你可以在这里调用你的后端 API 或 TronGrid 接口来追踪 USDT 来源
+        // 以下是示例假数据
+        const fakeResult = {
+          source: "TNJ4EAr3y**********",
+          hops: 3,
+          amount: "200 USDT"
+        };
+
+        resultDiv.innerHTML = `
+          <strong>查询结果：</strong><br>
+          来源地址：${fakeResult.source}<br>
+          路径跳数：${fakeResult.hops}<br>
+          最近转账金额：${fakeResult.amount}
+        `;
+      } catch (err) {
+        console.error(err);
+        resultDiv.innerHTML = "<span style='color:red;'>查询失败，请稍后再试。</span>";
+      }
+    }
+  </script>
+
+</body>
+</html>
